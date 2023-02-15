@@ -1,4 +1,12 @@
 import React from "react";
+import PropertyBox from "./PropertyBox";
+
+import "./Weather.css";
+import searchIcon from "./img/akar-icons_search.svg";
+import weatherIcon from "./img/03d.png";
+import windIcon from "./img/Wind.svg";
+import humidityIcon from "./img/Humidity.svg";
+import pressureIcon from "./img/Pressure.svg";
 
 export default function Weather() {
   return (
@@ -6,7 +14,7 @@ export default function Weather() {
       <div className="today-weather">
         <div className="search-box">
           <form autocomplete="off" className="align-items-center">
-            <img src="" alt="search-icon" className="search-icon" />
+            <img src={searchIcon} alt="search-icon" className="search-icon" />
             <input
               type="text"
               className="search-input"
@@ -35,47 +43,35 @@ export default function Weather() {
                   </a>
                 </div>
               </div>
-              <div className="description">Overcast clouds</div>
+              <div className="description">overcast clouds</div>
             </div>
           </div>
           <div className="image-section">
-            <img src="/" alt="clear sky"></img>
+            <img src={weatherIcon} alt="clear sky"></img>
           </div>
         </div>
         <div className="properties">
-          <div className="property">
-            <div className="text-section">
-              <span className="name">Wind</span>
-              <div className="value">
-                5.61 <span className="unit">m/h</span>
-              </div>
-            </div>
-            <div className="image-section">
-              <img src="/" alt="wind-icon" />
-            </div>
-          </div>
-          <div className="property">
-            <div className="text-section">
-              <span className="name">Humidity</span>
-              <div className="value">
-                66 <span className="unit">%</span>
-              </div>
-            </div>
-            <div className="image-section">
-              <img src="/" alt="humidity-icon" />
-            </div>
-          </div>
-          <div className="property">
-            <div className="text-section">
-              <span className="name">Pressure</span>
-              <div className="value">
-                1029 <span className="unit">hPa</span>
-              </div>
-            </div>
-            <div className="image-section">
-              <img src="/" alt="pressure-icon" />
-            </div>
-          </div>
+          <PropertyBox
+            name="Wind"
+            value={5.61}
+            unit="m/h"
+            img={windIcon}
+            alt="wind icon"
+          />
+          <PropertyBox
+            name="Humidity"
+            value={66}
+            unit="%"
+            img={humidityIcon}
+            alt="humidity icon"
+          />
+          <PropertyBox
+            name="Pressure"
+            value={1029}
+            unit="hPa"
+            img={pressureIcon}
+            alt="pressure icon"
+          />
         </div>
       </div>
       <div className="forecast"></div>

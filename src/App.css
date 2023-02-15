@@ -1,0 +1,11 @@
+.App {
+  font-family: "Belgrano", serif;
+  font-family: "Space Grotesk", sans-serif;
+  color: white;
+}
+
+.App .container {
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 60px;
+}
