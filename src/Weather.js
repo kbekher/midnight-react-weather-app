@@ -3,7 +3,6 @@ import axios from "axios";
 import PropertyBox from "./PropertyBox";
 import "./Weather.css";
 import searchIcon from "./img/akar-icons_search.svg";
-import weatherIcon from "./img/broken-clouds-night.png";
 import windIcon from "./img/Wind.svg";
 import humidityIcon from "./img/Humidity.svg";
 import pressureIcon from "./img/Pressure.svg";
@@ -19,7 +18,7 @@ export default function Weather(props) {
       date: "Sunday 12:00",
       temperature: Math.round(response.data.temperature.current),
       description: response.data.condition.description,
-      icon: response.data.condition.icon,
+      icon: `/images/${response.data.condition.icon}.png`,
       wind: response.data.wind.speed,
       humidity: response.data.temperature.humidity,
       pressure: response.data.temperature.pressure,
@@ -65,7 +64,7 @@ export default function Weather(props) {
               </div>
             </div>
             <div className="image-section">
-              <img src={weatherIcon} alt="weather icon"></img>
+              <img src={weatherData.icon} alt="weather icon"></img>
             </div>
           </div>
           <div className="properties">
