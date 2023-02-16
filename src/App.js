@@ -2,13 +2,11 @@ import React from "react";
 import Weather from "./Weather";
 import "./App.css";
 
-import background from "./img/Bg.jpg";
-
 export default function App() {
   return (
     <div
       style={{
-        backgroundImage: `url(${background})`,
+        backgroundImage: `url("/images/Bg.jpg")`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",

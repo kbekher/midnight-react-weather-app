@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 import PropertyBox from "./PropertyBox";
 import "./Weather.css";
-import searchIcon from "./img/akar-icons_search.svg";
-import windIcon from "./img/Wind.svg";
-import humidityIcon from "./img/Humidity.svg";
-import pressureIcon from "./img/Pressure.svg";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -31,7 +28,11 @@ export default function Weather(props) {
         <div className="today-weather">
           <div className="search-box">
             <form autoComplete="off" className="align-items-center">
-              <img src={searchIcon} alt="search-icon" className="search-icon" />
+              <img
+                src="/images/akar-icons_search.svg"
+                alt="search-icon"
+                className="search-icon"
+              />
               <input
                 type="text"
                 className="search-input"
@@ -72,21 +73,21 @@ export default function Weather(props) {
               name="Wind"
               value={weatherData.wind}
               unit="m/h"
-              img={windIcon}
+              img="/images/Wind.svg"
               alt="wind icon"
             />
             <PropertyBox
               name="Humidity"
               value={weatherData.humidity}
               unit="%"
-              img={humidityIcon}
+              img="/images/Humidity.svg"
               alt="humidity icon"
             />
             <PropertyBox
               name="Pressure"
               value={weatherData.pressure}
               unit="hPa"
-              img={pressureIcon}
+              img="/images/Pressure.svg"
               alt="pressure icon"
             />
           </div>
