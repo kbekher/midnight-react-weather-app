@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import FormattedDate from "./FormattedDate";
 import PropertyBox from "./PropertyBox";
 import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
-  function displayWeather(response) {
+  function handleResponse(response) {
     setWeatherData({
       ready: true,
       city: response.data.city,
-      date: "Sunday 12:00",
-      temperature: Math.round(response.data.temperature.current),
+      date: new Date(),
+      temperature: response.data.temperature.current,
       description: response.data.condition.description,
       icon: `/images/${response.data.condition.icon}.png`,
       wind: response.data.wind.speed,
@@ -44,10 +45,14 @@ export default function Weather(props) {
             <div className="text-section">
               <div>
                 <h1 className="city">{weatherData.city}</h1>
-                <p className="current-date">{weatherData.date}</p>
+                <div className="current-date">
+                  <FormattedDate date={weatherData.date} />
+                </div>
               </div>
               <div className="temperature-section">
-                <div className="temperature">{weatherData.temperature}°</div>
+                <div className="temperature">
+                  {Math.round(weatherData.temperature)}°
+                </div>
                 <div className="scale-switcher">
                   <div className="celsius scale">
                     <a href="/" className="scale-link">
@@ -116,7 +121,7 @@ export default function Weather(props) {
   } else {
     const apiKey = "e036b2a294859f51590o881405683ft3";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeather);
+    axios.get(apiUrl).then(handleResponse);
     return "Loading...";
   }
 }
