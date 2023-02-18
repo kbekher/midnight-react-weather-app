@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import FormattedDate from "./FormattedDate";
 import PropertyBox from "./PropertyBox";
@@ -21,6 +22,13 @@ export default function Weather(props) {
       pressure: response.data.temperature.pressure,
     });
   }
+
+  const loaderStyle = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
 
   if (weatherData.ready) {
     return (
@@ -122,6 +130,16 @@ export default function Weather(props) {
     const apiKey = "e036b2a294859f51590o881405683ft3";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
-    return "Loading...";
+    return (
+      <div style={loaderStyle}>
+        <BeatLoader
+          color="#ffffff"
+          loading={true}
+          size={15}
+          speedMultiplier={1}
+          margin={2}
+        />
+      </div>
+    );
   }
 }
