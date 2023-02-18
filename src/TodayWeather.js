@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import TemperatureSection from "./TemperatureSection";
 import PropertyBox from "./PropertyBox";
 
 import "./TodayWeather.css";
@@ -15,24 +16,10 @@ export default function TodayWeather(props) {
               <FormattedDate date={props.data.date} />
             </div>
           </div>
-          <div className="temperature-section">
-            <div className="temperature">
-              {Math.round(props.data.temperature)}°
-            </div>
-            <div className="scale-switcher">
-              <div className="celsius scale">
-                <a href="/" className="scale-link">
-                  C
-                </a>
-              </div>
-              <div className="fahrenheit scale turned-off">
-                <a href="/" className="scale-link">
-                  F
-                </a>
-              </div>
-            </div>
-            <div className="description">{props.data.description}</div>
-          </div>
+          <TemperatureSection
+            celsius={props.data.temperature}
+            description={props.data.description}
+          />
         </div>
         <div className="image-section">
           <img src={props.data.icon} alt="weather icon"></img>
