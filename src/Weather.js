@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
-
-import FormattedDate from "./FormattedDate";
-import PropertyBox from "./PropertyBox";
+import TodayWeather from "./TodayWeather";
 import "./Weather.css";
 
 export default function Weather(props) {
+  // const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState({ ready: false });
+
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  // }
+  // function updateCity(event) {
+  //   event.preventDefault();
+  //   setCity(event.target.value);
+  // }
 
   function handleResponse(response) {
     setWeatherData({
@@ -33,9 +40,13 @@ export default function Weather(props) {
   if (weatherData.ready) {
     return (
       <div className="Weather">
-        <div className="today-weather">
+        <div className="weather-wrap">
           <div className="search-box">
-            <form autoComplete="off" className="align-items-center">
+            <form
+              autoComplete="off"
+              className="align-items-center"
+              // onSubmit={handleSubmit}
+            >
               <img
                 src="/images/akar-icons_search.svg"
                 alt="search-icon"
@@ -46,63 +57,11 @@ export default function Weather(props) {
                 className="search-input"
                 placeholder="Change the city..."
                 autoFocus="off"
+                // onChange={updateCity}
               />
             </form>
           </div>
-          <div className="main-info">
-            <div className="text-section">
-              <div>
-                <h1 className="city">{weatherData.city}</h1>
-                <div className="current-date">
-                  <FormattedDate date={weatherData.date} />
-                </div>
-              </div>
-              <div className="temperature-section">
-                <div className="temperature">
-                  {Math.round(weatherData.temperature)}°
-                </div>
-                <div className="scale-switcher">
-                  <div className="celsius scale">
-                    <a href="/" className="scale-link">
-                      C
-                    </a>
-                  </div>
-                  <div className="fahrenheit scale turned-off">
-                    <a href="/" className="scale-link">
-                      F
-                    </a>
-                  </div>
-                </div>
-                <div className="description">{weatherData.description}</div>
-              </div>
-            </div>
-            <div className="image-section">
-              <img src={weatherData.icon} alt="weather icon"></img>
-            </div>
-          </div>
-          <div className="properties">
-            <PropertyBox
-              name="Wind"
-              value={weatherData.wind}
-              unit="m/h"
-              img="/images/Wind.svg"
-              alt="wind icon"
-            />
-            <PropertyBox
-              name="Humidity"
-              value={weatherData.humidity}
-              unit="%"
-              img="/images/Humidity.svg"
-              alt="humidity icon"
-            />
-            <PropertyBox
-              name="Pressure"
-              value={weatherData.pressure}
-              unit="hPa"
-              img="/images/Pressure.svg"
-              alt="pressure icon"
-            />
-          </div>
+          <TodayWeather data={weatherData} />
         </div>
         <div className="forecast"></div>
         <footer>
