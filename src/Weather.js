@@ -4,23 +4,22 @@ import BeatLoader from "react-spinners/BeatLoader";
 import TodayWeather from "./TodayWeather";
 import "./Weather.css";
 
-export default function Weather(props) {
-  // const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState({ ready: false });
+export default function Weather() {
+  const loaderStyle = {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  // }
-  // function updateCity(event) {
-  //   event.preventDefault();
-  //   setCity(event.target.value);
-  // }
+  const [city, setCity] = useState("");
+  const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
     setWeatherData({
       ready: true,
       city: response.data.city,
-      date: new Date(),
+      date: new Date(response.data.time * 1000),
       temperature: response.data.temperature.current,
       description: response.data.condition.description,
       icon: `/images/${response.data.condition.icon}.png`,
@@ -30,12 +29,21 @@ export default function Weather(props) {
     });
   }
 
-  const loaderStyle = {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  };
+  function search(city) {
+    const apiKey = "e036b2a294859f51590o881405683ft3";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search(city);
+    setCity("");
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
 
   if (weatherData.ready) {
     return (
@@ -45,7 +53,7 @@ export default function Weather(props) {
             <form
               autoComplete="off"
               className="align-items-center"
-              // onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
             >
               <img
                 src="/images/akar-icons_search.svg"
@@ -55,9 +63,10 @@ export default function Weather(props) {
               <input
                 type="text"
                 className="search-input"
+                value={city}
                 placeholder="Change the city..."
                 autoFocus="off"
-                // onChange={updateCity}
+                onChange={updateCity}
               />
             </form>
           </div>
@@ -86,9 +95,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const apiKey = "e036b2a294859f51590o881405683ft3";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    search("Kyiv");
     return (
       <div style={loaderStyle}>
         <BeatLoader
