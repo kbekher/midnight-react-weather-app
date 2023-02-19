@@ -20,6 +20,8 @@ export default function Weather() {
     setWeatherData({
       ready: true,
       city: response.data.city,
+      latitude: response.data.coordinates.latitude,
+      longitude: response.data.coordinates.longitude,
       date: new Date(response.data.time * 1000),
       temperature: response.data.temperature.current,
       description: response.data.condition.description,
@@ -73,7 +75,10 @@ export default function Weather() {
           </div>
           <TodayWeather data={weatherData} />
         </div>
-        <Forecast />
+        <Forecast
+          longitude={weatherData.longitude}
+          latitude={weatherData.latitude}
+        />
         <footer>
           This project was coded by{" "}
           <a
