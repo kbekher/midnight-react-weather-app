@@ -1,0 +1,12 @@
+.Forecast {
+  margin-top: 64.6px;
+  width: 396px;
+}
+
+.Forecast .wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}

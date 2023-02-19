@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import BeatLoader from "react-spinners/BeatLoader";
 import TodayWeather from "./TodayWeather";
+import Forecast from "./Forecast";
 import "./Weather.css";
 
 export default function Weather() {
@@ -72,7 +73,7 @@ export default function Weather() {
           </div>
           <TodayWeather data={weatherData} />
         </div>
-        <div className="forecast"></div>
+        <Forecast />
         <footer>
           This project was coded by{" "}
           <a
