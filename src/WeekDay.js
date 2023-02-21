@@ -4,7 +4,7 @@ import "./WeekDay.css";
 
 export default function WeekDay(props) {
   let temperature = Math.round(props.data.temperature.day);
-  let icon = `images/${props.data.condition.icon}.png`;
+  let icon = `images/f-${props.data.condition.icon}.png`;
 
   function formatDay(timestamp) {
     let date = new Date(timestamp * 1000);

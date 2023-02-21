@@ -12,11 +12,20 @@ export default function Forecast(props) {
   }
 
   if (loaded) {
-    console.log(forecastData);
     return (
       <div className="Forecast">
         <div className="wrap">
-          <WeekDay data={forecastData[0]} />
+          {forecastData.map((dailyForecast, index) => {
+            if (index > 0 && index < 7) {
+              return (
+                <div key={index}>
+                  <WeekDay data={dailyForecast} />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
     );
