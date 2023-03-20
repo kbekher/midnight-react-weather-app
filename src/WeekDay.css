@@ -33,3 +33,10 @@
   width: 108px;
   height: 69px;
 }
+
+@media (max-width: 576px) {
+  .WeekDay {
+    max-width: 346px;
+    padding: 6px 20px;
+  }
+}

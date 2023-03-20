@@ -36,65 +36,6 @@
   margin-top: 8px;
 }
 
-.TodayWeather .main-info .temperature-section {
-  display: flex;
-  flex-flow: row wrap;
-  align-content: center;
-  gap: 4px;
-  width: 350px;
-}
-
-.TodayWeather .main-info .temperature {
-  font-weight: 500;
-  font-size: 80px;
-  line-height: 94px;
-  height: 91px;
-  min-width: 130px;
-}
-
-.TodayWeather .scale-switcher {
-  width: 156px;
-  height: 91px;
-  border-radius: 8px;
-  background-color: rgba(217, 217, 217, 0.07);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-}
-
-.TodayWeather .scale {
-  text-align: center;
-  width: 77px;
-}
-
-.TodayWeather .scale-link {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 80px;
-  font-weight: 400;
-  line-height: 90px;
-  text-decoration: none;
-}
-
-.TodayWeather .scale-link:hover {
-  color: rgba(255, 255, 255, 0.3);
-  cursor: unset;
-}
-
-.TodayWeather .turned-off {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 8px;
-}
-
-.TodayWeather .turned-off .scale-link {
-  color: #fffffe;
-  font-weight: 500;
-}
-
-.TodayWeather .turned-off .scale-link:hover {
-  cursor: pointer;
-}
-
 .TodayWeather .description {
   color: rgba(255, 255, 255, 0.7);
   font-size: 18px;
@@ -114,4 +55,51 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .TodayWeather .main-info {
+    height: 350px;
+  }
+  .TodayWeather .main-info .text-section {
+    max-width: 250px;
+  }
+  .TodayWeather .city {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .TodayWeather .current-date,
+  .TodayWeather .description {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .TodayWeather .main-info .image-section img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .TodayWeather {
+    height: 360px;
+  }
+  .TodayWeather .main-info {
+    height: 264px;
+    padding: 22px;
+  }
+  .TodayWeather .main-info .text-section {
+    max-width: 164px;
+  }
+  .TodayWeather .main-info .image-section {
+    max-width: 228px;
+  }
+
+  .TodayWeather .city {
+    line-height: 30px;
+  }
+  .TodayWeather .current-date,
+  .TodayWeather .description {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

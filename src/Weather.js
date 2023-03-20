@@ -80,23 +80,25 @@ export default function Weather() {
           latitude={weatherData.latitude}
         />
         <footer>
-          This project was coded by{" "}
-          <a
-            href="https://leafy-basbousa-36ee27.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Kristina Bekher
-          </a>{" "}
-          and is
-          <a
-            href="https://github.com/NinjaGexly/midnight-react-weather-app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {" "}
-            open-sourced on GitHub
-          </a>{" "}
+          <p>
+            This project was coded by{" "}
+            <a
+              href="https://leafy-basbousa-36ee27.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Kristina Bekher
+            </a>{" "}
+            and is
+            <a
+              href="https://github.com/NinjaGexly/midnight-react-weather-app"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              open-sourced on GitHub
+            </a>{" "}
+          </p>
         </footer>
       </div>
     );

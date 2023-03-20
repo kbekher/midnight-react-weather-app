@@ -68,3 +68,42 @@
 .TemperatureSection .description::first-letter {
   text-transform: uppercase;
 }
+
+@media (max-width: 768px) {
+  .TemperatureSection {
+    max-width: 270px;
+  }
+  .TemperatureSection .temperature {
+    font-size: 60px;
+    line-height: 80px;
+    min-width: 100px;
+  }
+  .TemperatureSection .scale-switcher {
+    width: 112px;
+    height: 78px;
+  }
+  .TemperatureSection .scale-link {
+    font-size: 68px;
+    line-height: 82px;
+  }
+}
+
+@media (max-width: 576px) {
+  .TemperatureSection {
+    max-width: 184px;
+  }
+  .TemperatureSection .temperature {
+    font-size: 42px;
+    line-height: 60px;
+    min-width: 68px;
+    height: 56px;
+  }
+  .TemperatureSection .scale-switcher {
+    width: 94px;
+    height: 54px;
+  }
+  .TemperatureSection .scale-link {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
